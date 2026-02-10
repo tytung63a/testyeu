@@ -112,6 +112,49 @@ input, button {
   margin: auto;
 }
 
+
+/* ===== iOS SAFARI FIX: KHÔNG VỠ LAYOUT ===== */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.screen {
+  height: 100dvh; /* dynamic viewport height for iOS */
+}
+
+.card {
+  height: calc(100dvh - 24px);
+  max-height: calc(100dvh - 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* text scale adaptive */
+h1 {
+  font-size: clamp(22px, 5vw, 30px);
+}
+
+.names {
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+.message {
+  font-size: clamp(14px, 3.8vw, 17px);
+  line-height: 1.5;
+}
+
+/* prevent content pushing layout */
+.message, .gallery {
+  flex-shrink: 0;
+}
+
+/* safe area for iPhone notch */
+.card {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 </style>
 </head>
 
